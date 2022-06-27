@@ -13,9 +13,20 @@ or
 ```sh
 curl https://github.com/vladkyiashko/simple-system-backup/blob/main/simple-system-backup.sh
 ```
-
+Set executing permission
 ```sh
 chmod +x simple-system-backup.sh
+```
+
+**Install "rsync" package using your package manager:**
+
+Debian/Ubuntu
+```sh
+sudo apt install rsync
+```
+Arch Linux
+```sh
+sudo pacman -S rsync
 ```
 
 ## Usage
