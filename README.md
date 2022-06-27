@@ -44,22 +44,10 @@ Feel free to add extra exclude directories in the script if needed
 EXCLUDE_DIRS=("/dev/*" "/proc/*" "/sys/*" "/tmp/*" "/run/*" "/mnt/*" "/media/*" "/lost+found/*" "/home/*/.cache/*" "/var/lib/dhcpcd/*")
 ```
 
-Create/update a system backup
-```sh
-sudo ./simple-system-backup.sh --create
-```
+`sudo ./simple-system-backup.sh --create` - create/update a system backup
 
-Restore a system
-```sh
-sudo ./simple-system-backup.sh --restore
-```
+`sudo ./simple-system-backup.sh --restore` - restore a system
 
-Create/update a system backup while keeping a previous version of backup
-```sh
-sudo ./simple-system-backup.sh --create-with-prev
-```
+`sudo ./simple-system-backup.sh --create-with-prev` - create/update a system backup while keeping a previous version of backup
 
-Restore a system using a previous backup
-```sh
-sudo ./simple-system-backup.sh --restore-prev
-```
+`sudo ./simple-system-backup.sh --restore-prev` - restore a system using a previous backup
