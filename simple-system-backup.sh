@@ -11,7 +11,7 @@ check_create_backup_dirs() {
 		if [ ! -d $dir ]; then
 			echo "mkdir $dir"
 			if ! mkdir -p $dir; then
-				echo "can't create folder at path $dir; exit"
+				echo "Can't create folder at path $dir; PLEASE SET THE CORRECT BACKUP_PATH in the script; exit"
 				exit 0
 			fi
 		fi
@@ -41,7 +41,6 @@ do_rsync() {
 	for path in "${EXCLUDE_DIRS[@]}"; do
 		EXCLUDE_ARG+=(--exclude="$path")
 	done
-	#EXCLUDE_ARG+=(--exclude="$BACKUP_PATH/*")
 	
 	rsync -aAXH --info=progress2 --delete "${EXCLUDE_ARG[@]}" $1/* $2
 }
