@@ -1,7 +1,7 @@
 #!/bin/bash
 
-BACKUP_PATH=/mnt/630789e0-1fd4-4bf9-93c0-ee3dd0bf9a5a/backups
-EXCLUDE_DIRS=("/dev/*" "/proc/*" "/sys/*" "/tmp/*" "/run/*" "/mnt/*" "/media/*" "/lost+found" "/lost+found/*" "/home/*/.cache/*" "/var/lib/dhcpcd/*")
+BACKUP_PATH=/home/$(logname)/.backups
+EXCLUDE_DIRS=("/dev/*" "/proc/*" "/sys/*" "/tmp/*" "/run/*" "/mnt/*" "/media/*" "/lost+found/*" "/home/*/.cache/*" "/var/lib/dhcpcd/*")
 CURRENT_DIR=backup
 PREV_DIR=prev_backup
 
@@ -11,7 +11,7 @@ check_create_backup_dirs() {
 		if [ ! -d $dir ]; then
 			echo "mkdir $dir"
 			if ! mkdir -p $dir; then
-				echo "Can't create folder at path $dir; PLEASE SET THE CORRECT BACKUP_PATH in the script; exit"
+				echo "can't create folder at path $dir; exit"
 				exit 0
 			fi
 		fi
@@ -41,6 +41,7 @@ do_rsync() {
 	for path in "${EXCLUDE_DIRS[@]}"; do
 		EXCLUDE_ARG+=(--exclude="$path")
 	done
+	#EXCLUDE_ARG+=(--exclude="$BACKUP_PATH/*")
 	
 	rsync -aAXH --info=progress2 --delete "${EXCLUDE_ARG[@]}" $1/* $2
 }
